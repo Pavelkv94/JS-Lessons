@@ -24,7 +24,7 @@ const Lesson1: React.FunctionComponent = () => {
     <React.Fragment>
         <CurrencyExchangeContainer />
     </React.Fragment>
-  );
+    );
 };
 
 export default Lesson1;

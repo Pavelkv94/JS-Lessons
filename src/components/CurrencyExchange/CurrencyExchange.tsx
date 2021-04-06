@@ -13,16 +13,16 @@ type CurrencyExchangePropsType = {
 };
 
 const CurrencyExchange: React.FC<CurrencyExchangePropsType> = ({
-                                                                                  currenciesName,
-                                                                                  currentCurrency,
-                                                                                  currencyRate,
-                                                                                  isBuying,
-                                                                                  amountOfBYN,
-                                                                                  amountOfCurrency,
-                                                                                  changeCurrencyField,
-                                                                                  changeAction,
-                                                                                  changeCurrentCurrency,
-                                                                              }) => {
+    currenciesName,
+    currentCurrency,
+    currencyRate,
+    isBuying,
+    amountOfBYN,
+    amountOfCurrency,
+    changeCurrencyField,
+    changeAction,
+    changeCurrentCurrency,
+}) => {
     const viewCurrency = isBuying ? (
         <React.Fragment>
             <label>
@@ -68,11 +68,11 @@ const CurrencyExchange: React.FC<CurrencyExchangePropsType> = ({
                 </ul>
             </div>
             <div className="currency-action">
-        <span className={isBuying ? 'active' : ''} data-action="buy" onClick={changeAction}>
-          Buy
+                <span className={isBuying ? 'active' : ''} data-action="buy" onClick={changeAction}>
+                    Buy
         </span>
                 <span className={isBuying ? '' : 'active'} data-action="sell" onClick={changeAction}>
-          Sell
+                    Sell
         </span>
             </div>
             <div className="fields">
