@@ -112,7 +112,7 @@ function superSum(n: number):any {     //прилетает значение
     function helper(...args: number[]) {        
         argumens = [...argumens, ...args];   //из замыкания берется аргуменс и перезаписывается и обьединяется с массивом аргс, с каждым вызовом добавляется новое значение
         if (argumens.length >= n) {             //если длина меньше заданной длины то добавляем
-            return argumens.reduce((acc, number) => acc + number);
+            return argumens.reduce((acc, number) => acc + number); 
         } else {
             return helper
         }
