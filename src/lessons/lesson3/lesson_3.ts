@@ -15,6 +15,21 @@ console.log('lesson 3');
 // https://jsonplaceholder.typicode.com/posts/1
 // https://habr.com/ru/company/oleg-bunin/blog/417461/?_ga=2.54695343.543933152.1602500664-1040035071.1596811661
 
+let pr = new Promise((res, rej) => {
+    setInterval(() => {
+        if (false) {
+            res(5)
+        }
+        else {
+            rej({ a: 1, f: 0 })
+        }
+
+    }, 2000)
+
+})
+pr.then(res => {
+    console.log(res)
+}, err => {console.log(err)})
 
 // just a plug
-export default ()=>{};
+export default () => { };
