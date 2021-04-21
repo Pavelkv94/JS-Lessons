@@ -18,7 +18,7 @@ console.log('lesson 3');
 let pr = new Promise((res, rej) => {
     setTimeout(() => {
         if (true) {
-            res({id:1, name: "diana"})
+            res({ id: 1, name: "diana" })
         }
         else {
             rej({ a: 1, f: 0 })
@@ -40,41 +40,48 @@ let pr = new Promise((res, rej) => {
 
 //todo .catch - то же самое что и err=>{}
 //* обычный then(res=>{}).catch(err=>{})
-pr.then(res=>{
+pr.then(res => {
     console.log(res)
-}).catch(err=>{
+}).catch(err => {
     console.log(err)
-}).then(res=>{
+}).then(res => {
     console.log(res)
-}).catch(err=>{
+}).catch(err => {
     console.log(err)
-}).then(res=>{
+}).then(res => {
     console.log(res)
-}).catch(err=>{
+}).catch(err => {
     console.log(err)
-}).then(res=>{
+}).then(res => {
     console.log(res)
-}).catch(err=>{
+}).catch(err => {
     console.log(err)
 })
 
 
 //* когда цепочка прервется на появившейся ошибке в любом месте
-pr.then(res=>{
+pr.then(res => {
     console.log(res)
-}).then(res=>{
+}).then(res => {
     console.log(res)
-}).then(res=>{
+}).then(res => {
     console.log(res)
-}).then(res=>{
+}).then(res => {
     console.log(res)
-}).then(res=>{
+}).then(res => {
     console.log(res)
-}).catch(err=>{
+}).catch(err => {
     console.log(err)
 })
 
-
+//todo .finally() - для добавления side-effects
+pr.then(res => {
+    console.log(res)
+    return res
+    //@ts-ignore
+}).finally((a) => {
+    console.log("finaly-", a)
+}).then(res2 => { console.log(res2) })
 
 // just a plug
 export default () => { };
