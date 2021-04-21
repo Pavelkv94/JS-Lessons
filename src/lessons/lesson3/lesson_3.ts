@@ -16,9 +16,9 @@ console.log('lesson 3');
 // https://habr.com/ru/company/oleg-bunin/blog/417461/?_ga=2.54695343.543933152.1602500664-1040035071.1596811661
 
 let pr = new Promise((res, rej) => {
-    setInterval(() => {
-        if (false) {
-            res(5)
+    setTimeout(() => {
+        if (true) {
+            res({id:1, name: "diana"})
         }
         else {
             rej({ a: 1, f: 0 })
@@ -28,8 +28,14 @@ let pr = new Promise((res, rej) => {
 
 })
 pr.then(res => {
-    console.log(res)
-}, err => {console.log(err)})
+    console.log('res', res)
+    //throw new Error() --//* если появляется ошибка, она попадает в новый промис в качетсве rej
+    //@ts-ignore
+    return ({...res, gena: true}) //* если есть Return в колбэке, то создается новый ЗАРЕЗОЛВЕННЫЙ промис c аргументом res, к которому дальше по цепочке можжет применятся then или любой другой метод
+}, err => {
+    console.log(err)
+    return ("errror")
+}).then(res2=>{console.log("res2", res2)})
 
 // just a plug
 export default () => { };
