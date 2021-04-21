@@ -27,15 +27,54 @@ let pr = new Promise((res, rej) => {
     }, 2000)
 
 })
-pr.then(res => {
-    console.log('res', res)
-    //throw new Error() --//* если появляется ошибка, она попадает в новый промис в качетсве rej
-    //@ts-ignore
-    return ({...res, gena: true}) //* если есть Return в колбэке, то создается новый ЗАРЕЗОЛВЕННЫЙ промис c аргументом res, к которому дальше по цепочке можжет применятся then или любой другой метод
-}, err => {
+//todo .then(res=>{},err=>{})
+// pr.then(res => {
+//     console.log('res', res)
+//     //throw new Error() --//* если появляется ошибка, она попадает в новый промис в качетсве rej
+//     //@ts-ignore
+//     return ({...res, gena: true}) //* если есть Return в колбэке, то создается новый ЗАРЕЗОЛВЕННЫЙ промис c аргументом res, к которому дальше по цепочке можжет применятся then или любой другой метод
+// }, err => {
+//     console.log(err)
+//     return ("errror")
+// }).then(res2=>{console.log("res2", res2)})
+
+//todo .catch - то же самое что и err=>{}
+//* обычный then(res=>{}).catch(err=>{})
+pr.then(res=>{
+    console.log(res)
+}).catch(err=>{
     console.log(err)
-    return ("errror")
-}).then(res2=>{console.log("res2", res2)})
+}).then(res=>{
+    console.log(res)
+}).catch(err=>{
+    console.log(err)
+}).then(res=>{
+    console.log(res)
+}).catch(err=>{
+    console.log(err)
+}).then(res=>{
+    console.log(res)
+}).catch(err=>{
+    console.log(err)
+})
+
+
+//* когда цепочка прервется на появившейся ошибке в любом месте
+pr.then(res=>{
+    console.log(res)
+}).then(res=>{
+    console.log(res)
+}).then(res=>{
+    console.log(res)
+}).then(res=>{
+    console.log(res)
+}).then(res=>{
+    console.log(res)
+}).catch(err=>{
+    console.log(err)
+})
+
+
 
 // just a plug
 export default () => { };
