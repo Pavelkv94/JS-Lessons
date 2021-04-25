@@ -83,5 +83,27 @@ pr.then(res => {
     console.log("finaly-", a)
 }).then(res2 => { console.log(res2) })
 
+
+//todo async 
+//Функции с async возвращают зарезолвленный промис
+//Функции с async применяются часто с await
+async function test() {
+    let param = await {}
+}// делаем асинхронный запрос, await ждет только ПОЛОЖИТЕЛЬНЫХ результатов
+
+
+//перехват ошибок с await
+async function test1() {
+    try {
+        let param = await {}// делаем асинхронный запрос, await ждет только ПОЛОЖИТЕЛЬНЫХ результатов
+    }
+    catch {
+
+    }
+}
+
+
+
 // just a plug
 export default () => { };
+
