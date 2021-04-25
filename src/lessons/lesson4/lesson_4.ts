@@ -3,6 +3,21 @@ console.log('lesson 4');
 // http://latentflip.com/loupe/?code=JC5vbignYnV0dG9uJywgJ2NsaWNrJywgZnVuY3Rpb24gb25DbGljaygpIHsKICAgIHNldFRpbWVvdXQoZnVuY3Rpb24gdGltZXIoKSB7CiAgICAgICAgY29uc29sZS5sb2coJ1lvdSBjbGlja2VkIHRoZSBidXR0b24hJyk7ICAgIAogICAgfSwgMjAwMCk7Cn0pOwoKY29uc29sZS5sb2coIkhpISIpOwoKc2V0VGltZW91dChmdW5jdGlvbiB0aW1lb3V0KCkgewogICAgY29uc29sZS5sb2coIkNsaWNrIHRoZSBidXR0b24hIik7Cn0sIDUwMDApOwoKY29uc29sZS5sb2coIldlbGNvbWUgdG8gbG91cGUuIik7!!!PGJ1dHRvbj5DbGljayBtZSE8L2J1dHRvbj4%3D
 // https://jakearchibald.com/2015/tasks-microtasks-queues-and-schedules/
 
+//Task 1 
+
+
+//Task 2 
+// new Promise((res, rej) =>{
+//     console.log(1)
+// })
+// new Promise((res, rej) =>{
+//     setTimeout(()=>console.log(2),0)
+// })
+// Promise.resolve(setTimeout(()=>console.log(3),0))
+// console.log(4)
+// Promise.reject(console.log(5))
+//? 1 4 5 2 3
+
 
 // Task 01
 // Создайте промис, который постоянно находиться в состоянии pending.
@@ -41,6 +56,48 @@ console.log('lesson 4');
 // свойства resolve и reject получают ссылки на соответствующие функции
 // resolve и reject. Следующие два обработчика запускают методы resolve и reject.
 
+type testObjType = {
+    promise: null | Promise<any>;
+    resolve: null | Function;
+    reject: null | Function;
+    onSuccess: (paramName: string) => void;
+    onError: (paramName: string) => void;
+}
+
+const handlePromise: testObjType = {
+    promise: null,
+    resolve: null,
+    reject: null,
+    onSuccess: (paramName: string) => {
+        console.log(`Promise is resolved with data ${paramName}`)
+    },
+    onError: (paramName: string) => {
+        console.log(`Promise is rejected with data ${paramName}`)
+    },
+};
+
+export const createPromise = () => {
+    const somePromise: Promise<any> = new Promise((res, rej) => {
+        handlePromise.reject = rej;
+        handlePromise.resolve = res;
+    });
+    handlePromise.promise = somePromise;
+    handlePromise.promise
+        .then(res => handlePromise.onSuccess(res))
+        .catch(err => handlePromise.onError(err))
+}
+//@ts-ignore
+window.testObj = handlePromise;
+
+export const resolvePromise = () => {
+    handlePromise.resolve && handlePromise.resolve('True');
+}
+
+export const rejectPromise = () => {
+    handlePromise.reject && handlePromise.reject('False');
+}
+
+
 
 // Task 06
 // Создайте промис, который через 1 с возвращает строку "My name is".
@@ -59,4 +116,4 @@ console.log('lesson 4');
 
 
 // just a plug
-export default ()=>{};
+export default () => { };
