@@ -69,20 +69,19 @@ let counter: COunterType = {
 // console.log(counter.setCurrentCount(4))
 // console.log(counter.restCurrentCount())
 
-
-
-
-
 // Task 03
 // переделайте код из Task 02, что бы сработал следующий код:
 // counter.setCurrentCount(10).increment().increment().increment().decrement().getCurrentCount() // 12
 
 
-
-
 // Task 04
 // Написать функцию конструктор myFirstConstructorFunc которая принимает 2 параметра name и age и возвращает объект
 // у которого будут эти свойства и метод greeting из Task 01
+function myFirstConstructorFunc(name: string, age: number) {
+    return {
+        name, age, ed() { someObj.greeting() }
+    }
+}
 
 // Task 05 есть 2 объекта One и Two. С помощью bind и метода sayHello заставьте поздороваться объект One
 
@@ -99,7 +98,14 @@ let Two = { name: 'Two', sayHello: function () { console.log(`Hello, my name is 
 // Bind
 // 1) Дана функция sumTwoNumbers, реализовать функцию bindNumber которая принимает функцию sumTwoNumbers и число, и
 // возвращает другую функцию, которое также принимает число и возвращает сумму этих чисел. Замыкание использовать нельзя
+
 function sumTwoNumbers(a: number, b: number): number { return a + b };
+
+function bindNumber(func: Function, n: number) {
+    return func.bind(null, n);
+}
+let bindTen = bindNumber(sumTwoNumbers, 10);//всегда прибавляет 10
+console.log(bindTen(12)) 
 
 // 2) Напишите функцию которая принимает первым аргументом объект One, а вторым helperObj. Данная функция
 // возвращает другую функцию которая принимает строку в качестве аргумента и устанавливает ее свойству name объекта One
