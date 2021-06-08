@@ -34,9 +34,9 @@ class Animal {
 }
 
 let a1 = new Animal()
-console.log(a1.eat())
-console.log(a1.walk())
-console.log(a1.sleep())
+a1.eat()
+a1.walk()
+a1.sleep()
 
 //*Task 02
 // Реализовать класс Monkey на базе класса Animal,  конструктор принимает name(по умолчанию 'Monkey') в качестве
@@ -50,8 +50,8 @@ class Monkey extends Animal {
     climb() { console.log(`${this.name} climbing`) };
 }
 let m1 = new Monkey()
-console.log(m1.climb())
-console.log(m1.roar())
+m1.climb()
+m1.roar()
 
 //*Task 03
 // Реализовать класс Human на базе класса Monkey, конструктор принимает name(по умолчанию 'Human') в качестве
@@ -66,8 +66,8 @@ class Human extends Monkey {
 }
 
 let h1 = new Human()
-console.log(h1.think())
-console.log(h1.speak())
+h1.think()
+h1.speak()
 //* Task 04
 // Реализовать таски 01-03 через функции конструкторы в отдельном JS файле, реализовать наследование
 
