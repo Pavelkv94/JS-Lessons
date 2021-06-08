@@ -20,6 +20,23 @@ console.log('Lesson 5');
 // https://learn.javascript.ru/call-apply-decorators
 // https://medium.com/@stasonmars/%D0%BF%D0%BE%D0%B4%D1%80%D0%BE%D0%B1%D0%BD%D0%BE-%D0%BE-%D0%BC%D0%B5%D1%82%D0%BE%D0%B4%D0%B0%D1%85-apply-call-%D0%B8-bind-%D0%BD%D0%B5%D0%BE%D0%B1%D1%85%D0%BE%D0%B4%D0%B8%D0%BC%D1%8B%D1%85-%D0%BA%D0%B0%D0%B6%D0%B4%D0%BE%D0%BC%D1%83-javascript-%D1%80%D0%B0%D0%B7%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D1%87%D0%B8%D0%BA%D1%83-ddd5f9b06290
 
+//* Когда a = и 1 и 2 и 3 одновременно
+let obj = {
+    _a: 0,
+    get a() {
+        this._a += 1;
+        return this._a
+    }
+}
+//@ts-ignore
+if (obj.a === 1 && obj.a === 2 && obj.a === 3) {
+    console.log('work!!!!!!!!!!!!!')
+}
+
+
+
+
+
 
 // Task 01
 // Дан объект someObj, реализуйте функцию greeting и присвойте ее ключу объекта с аналогичным именем.
@@ -105,7 +122,7 @@ function bindNumber(func: Function, n: number) {
     return func.bind(null, n);
 }
 let bindTen = bindNumber(sumTwoNumbers, 10);//всегда прибавляет 10
-console.log(bindTen(12)) 
+console.log(bindTen(12))
 
 // 2) Напишите функцию которая принимает первым аргументом объект One, а вторым helperObj. Данная функция
 // возвращает другую функцию которая принимает строку в качестве аргумента и устанавливает ее свойству name объекта One
