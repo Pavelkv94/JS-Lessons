@@ -7,10 +7,103 @@ console.log('Lesson 6');
 // https://www.youtube.com/watch?v=BASquaxab_w
 // https://www.youtube.com/watch?v=uLY9GXGMXaA
 
+interface ITest {
+    yo: Function
+}
+
+class Test implements ITest {
+    name: string
+
+    constructor(name: string) {
+        this.name = name
+    }
+    yo() { }
+}
+interface ITest2 {
+    bye: Function
+}
+class Test2 extends Test implements ITest2 {
+    private saas = 50;
+    constructor(age: string) {
+        super(age)
+    }
+    bye() { };
+}
+
 // Task 01
 // Создайте структуру с именем student, содержащую поля: имя и фамилия, номер группы, успеваемость (массив из пяти элементов).
 // Создать массив из десяти элементов такого типа, упорядочить записи по возрастанию среднего балла.
 // Добавить возможность вывода фамилий и номеров групп студентов, имеющих оценки, равные только 4 или 5.
+
+interface IStudent {
+    name: string
+    surname: string
+    groupNumber: number
+    progress: number[]
+    averageMark: number
+}
+
+class Student implements IStudent {
+    name: string
+    surname: string
+    groupNumber: number
+    progress: number[]
+    averageMark: number
+
+    constructor(name: string, surname: string, groupNumber: number, progress: number[]) {
+        this.name = name;
+        this.surname = surname;
+        this.groupNumber = groupNumber;
+        this.progress = progress
+        this.averageMark = this.progress.reduce((sum: number, mark: number) => sum + mark) / this.progress.length
+    }
+    //*функция сортировки
+    private static sortStudent(s1: IStudent, s2: IStudent) {
+        if (s1.averageMark > s2.averageMark) {
+            return 1
+        } else if (s1.averageMark < s2.averageMark) {
+            return -1
+        } else return 0
+    }
+    //*упорядочим по возрастанию
+    static sort(arr: Array<IStudent>) {
+        const temp = [...arr]
+        return temp.sort(this.sortStudent)
+    }
+    //* Добавить возможность вывода фамилий и номеров групп студентов, имеющих оценки, равные только 4 или 5.
+    private static isAllMarksEqualFour(marks: number[]) {
+        return marks.every(mark => mark === 4)
+    }
+    private static isAllMarksEqualFive(marks: number[]) {
+        return marks.every(mark => mark === 5)
+    }
+
+    private static filterStudents(arr: Array<IStudent>) {
+        const result: Array<IStudent> = [];
+        arr.forEach(student => {
+            if (this.isAllMarksEqualFive(student.progress) || this.isAllMarksEqualFour(student.progress)) {
+                result.push(student);
+            }
+        });
+        return result
+    }
+    //* вывод результатов 
+    static promtGoodStudents(arr: Array<IStudent>) {
+        this.filterStudents(arr).forEach(s => {
+            console.log(`student good is ${s.surname}, from ${s.groupNumber} group`)
+        })
+    }
+}
+let students = [];
+students.push(new Student('vaca', 'pupkin', 1, [1, 5, 2, 3, 3]))
+students.push(new Student('gogi', 'qwe', 2, [4, 5, 4, 4, 4]))
+students.push(new Student('gena', 'pkoza', 24, [1, 1, 1, 3, 3]))
+students.push(new Student('ana', 'vafera', 444, [5, 5, 5, 5, 5]))
+
+console.log(students);
+console.log(Student.sort(students))
+Student.promtGoodStudents(students)
+
 
 // Task 02
 // Создать класс с двумя переменными. Добавить конструктор с входными параметрами и инициализирующий члены класса по умолчанию.
