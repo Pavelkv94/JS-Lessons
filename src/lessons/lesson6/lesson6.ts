@@ -100,15 +100,25 @@ students.push(new Student('gogi', 'qwe', 2, [4, 5, 4, 4, 4]))
 students.push(new Student('gena', 'pkoza', 24, [1, 1, 1, 3, 3]))
 students.push(new Student('ana', 'vafera', 444, [5, 5, 5, 5, 5]))
 
-console.log(students);
-console.log(Student.sort(students))
-Student.promtGoodStudents(students)
+// console.log(students);
+// console.log(Student.sort(students))
+// Student.promtGoodStudents(students)
 
 
 // Task 02
 // Создать класс с двумя переменными. Добавить конструктор с входными параметрами и инициализирующий члены класса по умолчанию.
 // Можно ли создать метод на экземпляре класса который будет удалять сам экземпляр класса?
 // Можно ли создать метод класса который будет удалять экземпляр класса?
+
+class TestTask2 {
+    per1: number
+    per2: number
+
+    constructor(per1: number, per2: number) {
+        this.per1 = per1;
+        this.per2 = per2;
+    }
+}
 
 // Task 03
 // Составить описание класса для представления времени. Предусмотреть возможности установки времени и изменения его отдельных
@@ -123,10 +133,82 @@ Student.promtGoodStudents(students)
 // Создать массив объектов данного класса.
 // Вывести список покупателей в алфавитном порядке и список покупателей, у которых номер кредитной карточки находится в заданном диапазоне.
 
+interface ISeller {
+    name: string
+    surname: string
+    adress: string
+    cashNumber: number
+}
+class Seller implements ISeller {
+    name: string
+    surname: string
+    adress: string
+    cashNumber: number
+
+    constructor(name: string, surname: string, adress: string, cashNumber: number) {
+        this.name = name;
+        this.surname = surname;
+        this.adress = adress;
+        this.cashNumber = cashNumber;
+    }
+    set setName(name: string) {
+        this.name = name
+    }
+    get getName() {
+        return this.name
+    }
+    promtAttributes() {
+
+    }
+
+}
+
+
+
+
+
+
+
 // Task 05
 // Создать класс машина - имеющий марку, число цилиндров, мощность. Определить конструктор и функцию печати.
 // Создать производный класс – грузовик, имеющий грузоподъемность кузова.
 // Определить функции переназначения марки и грузоподъемности.
+interface ICar {
+    mark: string
+    numberCyl: number
+    power: number
+}
+class Car implements ICar {
+    mark: string
+    numberCyl: number
+    power: number
+
+    constructor(mark: string, numberCyl: number, power: number) {
+        this.mark = mark;
+        this.numberCyl = numberCyl;
+        this.power = power;
+    }
+
+    drive() {
+        console.log("Zoom!");
+    }
+}
+
+interface IBigCar {
+    weight: number
+}
+class BigCar extends Car implements IBigCar {
+    weight: number
+
+    constructor() {
+        super("MAZ", 4, 250)
+        this.weight = 500;
+    }
+}
+const tesla = new Car('Audi', 8, 500)
+console.log(tesla)
+const maz = new BigCar()
+console.log(maz)
 
 // just a plug
 export default () => {
