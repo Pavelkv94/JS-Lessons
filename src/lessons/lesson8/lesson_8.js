@@ -1,11 +1,20 @@
 // Task 1
 // Есть некоторая строка (const str = 'fgfggg';), что будет, если мы возьмем str[0]
-
+let a = str[0] //'f'
 // Task 2
 // Реализуйте необходимый код, что бы выражение (2).plus(3).minus(1) сработало и вернуло 4
+Number.prototype.plus = function (value) { return this + value }
+Number.prototype.minus = function (value) { return this - value }
 
 // Task 3
 // Реализуйте функцию, которая принимает следующие аргументы (строки) '*', '1', 'b', '1c', и возвращает строку '1*b*1c'
+function str(a, b, c, d) {
+	return `${b}${a}${c}${a}${d}`
+}
+//*либо 
+function str2() {
+	return [].slice.call(arguments, 1).join(arguments[0])
+}
 
 // Task 4
 // Напишите функцию которая найдет сумму всех вершин в структуре данны типа tree
@@ -18,28 +27,44 @@ const tree = {
 		valueNode: 1,
 		next: null
 	},
-		{
-			valueNode: 3,
-			next: null
-		},
-		{
-			valueNode: 2,
-			next: null
-		},
-		{
-			valueNode: 2,
-			next: [
-				{
-					valueNode: 1,
-					next: null
-				},
-				{
-					valueNode: 5,
-					next: null
-				}
-			]
-		}]
+	{
+		valueNode: 3,
+		next: null
+	},
+	{
+		valueNode: 2,
+		next: null
+	},
+	{
+		valueNode: 2,
+		next: [
+			{
+				valueNode: 1,
+				next: null
+			},
+			{
+				valueNode: 5,
+				next: null
+			}
+		]
+	}]
 };
+//* рекурсивное решение
+function countBranches(tree) {
+	let sum = 0;
+	function helper(tr) {
+		sum += tree.valueNode
+		if (tree.next !== null) {
+			tree.next.array.forEach(element => {
+				helper(element)
+			});
+		}
+	}
+	helper(tree)
+	return sum
+}
+
+
 
 // Task 5
 // исправить код, что бы работал правильно
