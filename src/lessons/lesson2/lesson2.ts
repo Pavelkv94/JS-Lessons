@@ -104,15 +104,15 @@ function sumTo2(n: number, acc: number): number {
 sumTo2(3, 0);
 
 //рЕШЕНИЕ:
-function superSum(n: number):any {     //прилетает значение
+function superSum(n: number): any {     //прилетает значение
     if (n === 0) return 0;              //если равно 0 возвращаем 0
     if (n === 1) return (num: number) => num;       //если равно 1 возвращаем 1
 
     let argumens: number[] = [];            //создается пустой массив
-    function helper(...args: number[]) {        
+    function helper(...args: number[]) {
         argumens = [...argumens, ...args];   //из замыкания берется аргуменс и перезаписывается и обьединяется с массивом аргс, с каждым вызовом добавляется новое значение
         if (argumens.length >= n) {             //если длина меньше заданной длины то добавляем
-            return argumens.reduce((acc, number) => acc + number); 
+            return argumens.reduce((acc, number) => acc + number);
         } else {
             return helper
         }
@@ -139,8 +139,7 @@ superSum(3)(2, 5)(3, 9) //10
 // 5! = 5 * 4 * 3 * 2 * 1 = 120
 
 function factorial(n: number): number {
-    if (n === 1) { return n }
-    return n * factorial(n - 1)
+    return n <= 1 ? n : n * factorial(n - 1)
 }
 factorial(3)
 

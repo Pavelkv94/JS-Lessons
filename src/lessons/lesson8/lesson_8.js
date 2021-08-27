@@ -343,7 +343,7 @@ function isSorted(arr) {
 // list.has(4)                           // true
 // list.has(6)                           // false
 
-// Task 21
+//! Task 21
 // Что выведет консоль?
 
 Promise
