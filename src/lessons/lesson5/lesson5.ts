@@ -104,7 +104,7 @@ function myFirstConstructorFunc(name: string, age: number) {
 
 let One = { name: 'One' };
 let Two = { name: 'Two', sayHello: function () { console.log(`Hello, my name is ${this.name}`) } };
-
+ Two.sayHello.bind(One)()
 // Task 06
 // создайте объект helperObj у которого есть следующие методы:
 // changeName - меняет значение у свойства name объекта на полученное значение
